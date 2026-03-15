@@ -1,0 +1,312 @@
+/* Everforest Dark Colors */
+@define-color background #1E2326;
+@define-color background-transparent rgba(30, 35, 38, 0.85);
+@define-color background-light #272e33;
+@define-color foreground #d3c6aa;
+@define-color black #3c474d;
+@define-color red #e67e80;
+@define-color green #a7c080;
+@define-color yellow #dbbc7f;
+@define-color blue #7fbbb3;
+@define-color magenta #d699b6;
+@define-color cyan #83c092;
+@define-color white #d3c6aa;
+@define-color orange #e69875;
+
+* {
+    margin-top: 0px;
+    margin-bottom: 1px;
+    font-family: HackNerdFontMono;
+    font-size: 13px;
+    border-radius: 5px;
+}
+
+window#waybar {
+    /*background: rgba(0,0,0,0);*/
+    background-color: alpha(@background-light, 0.99);
+    color: @foreground;
+}
+
+/*#waybar.hidden {
+    background: transparent !important;
+    opacity: 0 !important;
+}*/
+
+#workspaces button {
+    padding: 0 5px;
+    background-color: @background-light;
+    color: @foreground;
+    border-width: 2px;
+    border-style: solid;
+    margin-right: 4px;
+}
+
+#workspaces button.focused {
+    padding: 0 5px;
+    background-color: @background;
+    color: @orange;
+    border-width: 2px;
+    border-style: solid;    
+    border-color: @green;
+    margin-right: 4px;
+}
+	
+#workspaces button.urgent {
+    background-color: @background-light;
+    color: @red;
+}
+
+#mode {
+    background-color: @background-light;
+    border-width: 2px;
+    border-style: solid;
+    border-color: @green;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#power-profiles-daemon {
+    padding: 0 10px;
+    color: @foreground;
+}
+
+#window,
+#workspaces {
+    margin: 0 4px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+#clock {
+    background-color: @background-light;
+    color: @cyan;
+    border-color: @green;
+    border-width: 2px;
+    border-style: solid;
+}
+
+#battery {
+    background-color: @background-light;
+    color: @blue;
+    border-style: solid;
+    border-color: @green;
+    border-width: 2px;
+}
+
+#battery.charging, #battery.plugged {
+    color: @green;
+    background-color: @background;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+/* Using steps() instead of linear as a timing function to limit cpu usage */
+#battery.critical:not(.charging) {
+    background-color: @background;
+    color: @red;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#custom-power{
+    /*margin-left: 10px;*/
+    padding-left: 8px;
+    font-size: 15px;
+    border-style: solid;
+    border-color: @green;
+    border-width: 2px;
+}
+
+#power-profiles-daemon { 
+    padding-right: 15px;
+}
+
+#power-profiles-daemon.performance {
+    background-color: @background-ligth;
+    color: @foreground;
+}
+
+#power-profiles-daemon.balanced {
+    background-color: #2980b9;
+    color: #ffffff;
+}
+
+#power-profiles-daemon.power-saver {
+    background-color: #2ecc71;
+    color: #000000;
+}
+
+label:focus {
+    background-color: @background-ligth;
+}
+
+#cpu {
+    background-color: @background-light;
+    color: @foreground;
+    border-width: 2px;
+    border-color: @green;
+    border-style: solid;
+}
+
+#memory {
+    background-color: @background-light;
+    border-width: 2px;
+    border-color: @green;
+    border-style: solid;
+}
+
+#disk {
+    background-color: @background-light;
+    color: @foreground;
+    border-width: 2px;
+    border-color: @green;
+    border-style: solid;
+}
+
+#backlight {
+    background-color: @background-light;
+    color: @magenta;
+    border-width: 2px;
+    border-color: @green;
+    border-style: solid;
+}
+
+#network {
+    background-color: @background-light;
+    border-width: 2px;
+    border-color: @green;
+    border-style: solid;
+}
+
+#network.disconnected {
+    background-color: @background-light;
+    border-width: 2px;
+    border-color: @green;
+    border-style: solid;
+}
+
+#pulseaudio {
+    background-color: @background-light;
+    color: @foreground;
+    border-width: 2px;
+    border-color: @green;
+    border-style: solid;
+}
+
+#pulseaudio.muted {
+    background-color: @background-light;
+    color: @red;
+    border-width: 2px;
+    border-color: @green;
+    border-style: solid;
+}
+
+#wireplumber {
+    background-color: @background-light;
+    color: @foreground;
+}
+
+#wireplumber.muted {
+    background-color: @background-light;
+    color: @red;
+}
+
+#temperature {
+    background-color: @background-light;
+    color: @orange;
+    border-width: 2px;
+    border-color: @green;
+    border-style: solid;
+}
+
+#temperature.critical {
+    background-color: @red;
+}
+
+#tray {
+    background-color: @background-light;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @red;
+}
+
+#idle_inhibitor {
+    background-color: @background-light;
+}
+
+#idle_inhibitor.activated {
+    background-color: @background-light;
+    color: #2d3436;
+}
+
+#keyboard-state > label {
+    padding: 0 5px;
+}
+
+#keyboard-state > label.locked {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#scratchpad {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#scratchpad.empty {
+	background-color: transparent;
+}
+
+#privacy {
+    padding: 0;
+}
+
+#privacy-item {
+    padding: 0 5px;
+    color: white;
+}
+
+#privacy-item.screenshare {
+    background-color: #cf5700;
+}
+
+#privacy-item.audio-in {
+    background-color: #1ca000;
+}
+
+#privacy-item.audio-out {
+    background-color: #0069d4;
+}
